@@ -153,11 +153,78 @@
   }
 }
 
+@theme inline {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', var(--font-inter), 'Helvetica Neue', Arial, sans-serif;
+  --color-imessage-blue: #0a84ff;
+  --color-imessage-grey: #e9e9eb;
+  --color-imessage-label: #8e8e93;
+  --color-doordash: #ff3008;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  .bubble {
+    position: relative;
+    border-radius: 1.15rem;
+    padding: 0.45rem 0.85rem;
+    font-size: 17px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .bubble-sent {
+    background: var(--color-imessage-blue);
+    color: #fff;
+  }
+
+  .bubble-received {
+    background: var(--color-imessage-grey);
+    color: #000;
+  }
+
+  .bubble-sent::before,
+  .bubble-sent::after,
+  .bubble-received::before,
+  .bubble-received::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 20px;
+  }
+
+  .bubble-sent::before {
+    right: -7px;
+    width: 20px;
+    background: var(--color-imessage-blue);
+    border-bottom-left-radius: 16px 14px;
+  }
+
+  .bubble-sent::after {
+    right: -26px;
+    width: 26px;
+    background: #fff;
+    border-bottom-left-radius: 10px;
+  }
+
+  .bubble-received::before {
+    left: -7px;
+    width: 20px;
+    background: var(--color-imessage-grey);
+    border-bottom-right-radius: 16px 14px;
+  }
+
+  .bubble-received::after {
+    left: -26px;
+    width: 26px;
+    background: #fff;
+    border-bottom-right-radius: 10px;
   }
 }

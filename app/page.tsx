@@ -1,16 +1,29 @@
-export default function Home() {
+import { Conversation } from '@/components/conversation'
+import { IPhoneFrame } from '@/components/iphone-frame'
+import { MessageInputBar } from '@/components/message-input-bar'
+import { MessagesHeader } from '@/components/messages-header'
+import { StatusBar } from '@/components/status-bar'
+
+export default function Page() {
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans">
-      <main className="flex w-full max-w-3xl flex-col items-center gap-8 px-6 py-16 text-center sm:items-start sm:text-left">
-        <div className="flex flex-col gap-4">
-          <h1 className="text-4xl font-bold tracking-tight">
-            dh1
-          </h1>
-          <p className="max-w-md text-lg text-muted-foreground">
-            To get started, send a prompt or modify this page directly.
-          </p>
-        </div>
-      </main>
-    </div>
-  );
+    <main className="flex min-h-svh flex-col items-center justify-center gap-8 bg-[radial-gradient(ellipse_at_top,#ffffff_0%,#eef0f4_55%,#e2e5eb_100%)] px-4 py-12">
+      <h1 className="sr-only">DoorDash AI Agent iMessage ordering concept</h1>
+      <div className="origin-top scale-[0.85] sm:scale-100">
+        <IPhoneFrame>
+          <div className="flex h-full flex-col">
+            <div className="bg-[#f9f9f9]/90">
+              <StatusBar />
+            </div>
+            <MessagesHeader />
+            <Conversation />
+            <MessageInputBar />
+          </div>
+        </IPhoneFrame>
+      </div>
+      <p className="text-center text-sm text-[#6e6e73]">
+        <span className="font-semibold text-[#1d1d1f]">DoorDash AI Agent</span>
+        {' — conversational ordering over iMessage. UI/UX concept.'}
+      </p>
+    </main>
+  )
 }
